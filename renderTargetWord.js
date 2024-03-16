@@ -1,6 +1,5 @@
 export function renderTargetWord(wordList, wordLength, duplicatesAllowed) {
   try {
-    if (!wordList) throw 'Error: You do not have a valid word list';
     if (wordLength == NaN)
       // This check does not seem to work, need to rework it in the future
       throw 'Error: Word length has to consist of a number';
@@ -45,30 +44,3 @@ export function renderTargetWord(wordList, wordLength, duplicatesAllowed) {
   const randomisedIndex = Math.floor(Math.random() * criteriaWords.length);
   return criteriaWords[randomisedIndex];
 }
-
-// const wordList = [
-//   'corn',
-//   'roar',
-//   'blue',
-//   'bulb',
-//   'creek',
-//   'found',
-//   'scrap',
-//   'sassy',
-//   'bright',
-//   'cranky',
-//   'danced',
-//   'bitter',
-//   'swarmed',
-//   'delight',
-//   'tonight',
-//   'pattern',
-// ];
-
-// try {
-//   renderTargetWord(wordList, 4, 'yes');
-// } catch (err) {
-//   console.log(
-//     'Error: Invalid arguments for renderTargetWord. It needs an array of words, a number, and a string that is either "yes" or "no"'
-//   );
-// }
