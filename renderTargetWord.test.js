@@ -8,12 +8,21 @@ describe('renderTargetWord()', () => {
     expect(output).toStrictEqual('corn');
   });
 
-  // I nästa steg kräver testet att ETT ord från den specificerade listan skall väljas ut och returneras, vilket skall ske slumpmässigt. Dock kontrollerar inte detta test för huruvida det är slumpmässigt eller ej...
+  // I nästa steg kräver testet att ETT ord från den specificerade listan skall väljas ut och returneras, vilket skall ske slumpmässigt. Den testade funktionen körs 6 ggr för att kontrollera att det inte är samma ord som returneras varje gång. Testet kan inte garantera att resultatet är helt statistiskt slumpmässigt men kan ses som en indikation på att det antagligen är det.
   it('returns a random word from a list containing only four letter non-duplicate words', () => {
     const wordList = ['corn', 'sand', 'blue', 'gold', 'nice'];
-    const output = renderTargetWord(wordList, 4, 'yes');
-    expect(output).toHaveLength(4);
-    expect(wordList).toContain(output);
+    const accumulatedOutputs = [];
+
+    for (let i = 0; i < 6; i++) {
+      const output = renderTargetWord(wordList, 4, 'yes');
+      expect(output).toHaveLength(4);
+      expect(wordList).toContain(output);
+      accumulatedOutputs.push(output);
+    }
+    const allEqual = accumulatedOutputs.every(
+      (word) => word === accumulatedOutputs[0]
+    );
+    expect(allEqual).toBe(false);
   });
 
   // I detta test lägger jag till att man kan välja hur långt ett ord ska vara, vilket kändes som ett lagom stort nästa steg
@@ -32,11 +41,21 @@ describe('renderTargetWord()', () => {
       'delight',
       'blasted',
     ];
-    const output = renderTargetWord(wordList, 6, 'yes');
-    expect(output).toHaveLength(6);
-    expect(wordList).toContain(output);
+    const accumulatedOutputs = [];
+
+    for (let i = 0; i < 6; i++) {
+      const output = renderTargetWord(wordList, 6, 'yes');
+      expect(output).toHaveLength(6);
+      expect(wordList).toContain(output);
+      accumulatedOutputs.push(output);
+    }
+    const allEqual = accumulatedOutputs.every(
+      (word) => word === accumulatedOutputs[0]
+    );
+    expect(allEqual).toBe(false);
   });
 
+  // Detta test inkluderar även det sista kriteriet. Jag ändrade orden i wordList nedan för att inkludera både ord med dublett-bokstäver och ej, för varje ordlängd.
   it('returns a random word from a word list, with matching number of letters, that also matches the criteria for duplicate or non-duplicate letters', () => {
     const wordList = [
       'corn',
@@ -56,9 +75,27 @@ describe('renderTargetWord()', () => {
       'tonight',
       'pattern',
     ];
-    const output = renderTargetWord(wordList, 7, 'no');
+
+    const accumulatedOutputs = [];
     const wordsMatchingCriteria = ['swarmed', 'delight'];
-    expect(output).toHaveLength(7);
-    expect(wordsMatchingCriteria).toContain(output);
+
+    for (let i = 0; i < 6; i++) {
+      const output = renderTargetWord(wordList, 7, 'no');
+      expect(output).toHaveLength(7);
+      expect(wordsMatchingCriteria).toContain(output);
+      accumulatedOutputs.push(output);
+    }
+    const allEqual = accumulatedOutputs.every(
+      (word) => word === accumulatedOutputs[0]
+    );
+    expect(allEqual).toBe(false);
   });
+
+  // Nedan är ett ofärdigt försök att testa för om algoritmen ger ett error om den matas in med felaktiga parametrar, vilket jag eventuellt kan jobba vidare med sen.
+  /*  
+  it('returns a throw if arguments for the function are invalid', () => {
+    const wordList = ['corn', 'roar', 'blue', 'bulb'];
+    const output = renderTargetWord(wordList, 8, 'yes');
+    expect(output).toThrow();
+  }); */
 });
