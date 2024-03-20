@@ -3,7 +3,6 @@ export function evaluateGuess(guessedWord, targetWord) {
   for (let i = 0; i < guessedWord.length; i++) {
     const guessedLetter = guessedWord.charAt(i);
     const targetLetter = targetWord.charAt(i);
-
     const result = matchingStatus();
 
     function matchingStatus() {
@@ -12,6 +11,7 @@ export function evaluateGuess(guessedWord, targetWord) {
       } else {
         for (let j = 0; j < targetWord.length; j++) {
           if (guessedLetter == targetWord.charAt(j)) {
+            targetWord = targetWord.replace(targetWord.charAt(j), '?'); // "raderar" bokstaven från mål-ordet så att samma bokstav inte kan resultera i "misplaced" fler än en gång
             return 'misplaced';
           }
         }

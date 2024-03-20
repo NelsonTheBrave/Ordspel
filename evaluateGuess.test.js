@@ -38,13 +38,13 @@ describe('Ordspel', () => {
 
   // Till sist adderade jag ett test som även tog hänsyn till rätt bokstav på fel plats, dvs "misplaced". Därmed var alla villkor fyllda.
   it('compares two words with same length and returns an array with one object for each letter of the first word, where it gives one of three results: "correct" (same letter in same position in both words), "incorrect" (letter does not exist in the second word at all), or "misplaced" (letter exists in second word but not in that current position', () => {
-    const output = evaluateGuess('chestnut', 'smashing');
+    const output = evaluateGuess('chestnut', 'trashing');
     expect(output).toStrictEqual([
       { letter: 'c', result: 'incorrect' },
       { letter: 'h', result: 'misplaced' },
       { letter: 'e', result: 'incorrect' },
       { letter: 's', result: 'correct' },
-      { letter: 't', result: 'incorrect' },
+      { letter: 't', result: 'misplaced' },
       { letter: 'n', result: 'misplaced' },
       { letter: 'u', result: 'incorrect' },
       { letter: 't', result: 'incorrect' },
