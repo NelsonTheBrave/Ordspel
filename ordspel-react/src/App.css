@@ -1,0 +1,30 @@
+.wrapper {
+  border: 4px dotted rgb(85, 71, 4);
+  min-width: 400px;
+  width: fit-content;
+  margin: 4em auto;
+  text-align: center;
+  background-color: rgb(204, 114, 204);
+}
+.wrapper .wordBox {
+  background-color: green;
+  width: 4em;
+  height: 4em;
+  margin: 0 0.5em;
+  border-radius: 10%;
+}
+.wrapper .wordBox.selected {
+  outline: 2px solid #173803;
+}
+.wrapper .wordBox p {
+  text-align: center;
+  padding: 0.5em 0;
+  font-size: 2em;
+  display: block;
+  margin: 0;
+}
+.wrapper .wordRow {
+  display: flex;
+  margin: 1em 0.3em;
+  padding: 0.3em 0.2em;
+}

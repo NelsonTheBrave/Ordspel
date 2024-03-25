@@ -1,0 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: pink;
+  font-family: sans-serif;
+}
