@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import InputBox from './InputBox';
 
-let counter = 0;
 const alphabet = [
   'A',
   'B',
@@ -34,29 +33,16 @@ const alphabet = [
   'Ö',
 ];
 
-export default function InputRow({ onSubmit, isPaused }) {
-  const [letterBoxes, setBoxes] = useState([
-    {
-      letter: '',
-      selected: true,
-    },
-    {
-      letter: '',
-      selected: false,
-    },
-    {
-      letter: '',
-      selected: false,
-    },
-    {
-      letter: '',
-      selected: false,
-    },
-    {
-      letter: '',
-      selected: false,
-    },
-  ]);
+export default function InputRow({ onSubmit, isPaused, numberOfLetters }) {
+  const initialInputState = [];
+  for (let i = 0; i < numberOfLetters; i++) {
+    if (i == 0) {
+      initialInputState.push({ letter: '', selected: true });
+    } else {
+      initialInputState.push({ letter: '', selected: false });
+    }
+  }
+  const [letterBoxes, setBoxes] = useState(initialInputState);
 
   console.log('letterboxes: ', letterBoxes);
 
@@ -66,6 +52,7 @@ export default function InputRow({ onSubmit, isPaused }) {
 
   function handleLetterInput(event) {
     const pressedKey = event.key.toUpperCase();
+    console.log(pressedKey);
     if (pressedKey == 'ENTER') {
       const guessedWord = [];
       letterBoxes.forEach((box) => {
@@ -80,7 +67,7 @@ export default function InputRow({ onSubmit, isPaused }) {
           const event = new KeyboardEvent('keydown', {
             key: 'Backspace',
           });
-          for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 10; i++) {
             document.dispatchEvent(event);
           }
         }
@@ -104,6 +91,30 @@ export default function InputRow({ onSubmit, isPaused }) {
           }
           setBoxes(updatedLetterBoxes);
 
+          return;
+        }
+      }
+    } else if (pressedKey == 'ARROWLEFT') {
+      const updatedLetterBoxes = [...letterBoxes];
+      for (let i = 0; i < updatedLetterBoxes.length; i++) {
+        if (updatedLetterBoxes[i].selected == true) {
+          if (i > 0) {
+            updatedLetterBoxes[i].selected = false;
+            updatedLetterBoxes[i - 1].selected = true;
+          }
+          setBoxes(updatedLetterBoxes);
+          return;
+        }
+      }
+    } else if (pressedKey == 'ARROWRIGHT') {
+      const updatedLetterBoxes = [...letterBoxes];
+      for (let i = 0; i < updatedLetterBoxes.length; i++) {
+        if (updatedLetterBoxes[i].selected == true) {
+          if (i < updatedLetterBoxes.length - 1) {
+            updatedLetterBoxes[i].selected = false;
+            updatedLetterBoxes[i + 1].selected = true;
+          }
+          setBoxes(updatedLetterBoxes);
           return;
         }
       }

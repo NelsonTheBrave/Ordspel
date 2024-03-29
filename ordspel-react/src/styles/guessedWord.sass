@@ -1,8 +1,8 @@
 .guessed-word
     display: flex
     justify-content: space-evenly
-    margin: 0.8rem 0
-    padding: 0.1rem 0.5rem
+    margin: 1rem 0.5rem
+    // padding: 0.1rem 0.5rem
     p
         visibility: hidden
         width: 4rem
@@ -33,6 +33,12 @@
             animation-fill-mode: forwards
         &:nth-child(5)
             animation: guessed-word 300ms 1200ms
+            animation-fill-mode: forwards
+        &:nth-child(6)
+            animation: guessed-word 300ms 1500ms
+            animation-fill-mode: forwards
+        &:nth-child(7)
+            animation: guessed-word 300ms 1800ms
             animation-fill-mode: forwards
 
 @keyframes guessed-word

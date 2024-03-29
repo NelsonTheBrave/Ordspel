@@ -48,30 +48,12 @@ export function evaluateGuess(guessedWord, targetWord) {
     targetWord.splice(index, 1, '?');
     targetWord = targetWord.join('');
   }
-  console.log(output);
+
+  let rightGuessCount = 0;
+  for (let i = 0; i < output.length; i++) {
+    if (output[i].result == 'correct') {
+      rightGuessCount++;
+    }
+  }
+  return { Output: output, RightGuessCount: rightGuessCount };
 }
-
-evaluateGuess('LEKEL', 'CYKEL');
-
-/* 
-DEFINIERA
-
-
-
-SEPARERA
-- loopa igenom gissade ordet bokstav för bokstav
-- jämföra bokstav på nuvarande position mellan bägge ord, se om den är korrekt eller ej
-- om ej korrekt, jämföra bokstav på nuvarande position i första ord med övriga bokstäver i andra ordet
-- skapa en array med ett objekt för varje bokstav i gissade ordet, där "result" är en variabel som beror på ovanstående jämförelser 
-
-
-EXPERIMENTERA
-
-
-
-KOMBINERA
-
-
-
-
-*/

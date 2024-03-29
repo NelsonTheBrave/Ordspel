@@ -13,7 +13,16 @@ const wordList = [
   'found',
   'scrap',
   'sassy',
-  'bright',
+  'smoke',
+  'binge',
+  'daddy',
+  'mommy',
+  'techno',
+  'might',
+  'lunch',
+  'fight',
+  'broke',
+  'swamp',
   'cranky',
   'danced',
   'bitter',
@@ -32,8 +41,12 @@ const wordList = [
 // }
 
 // getWordList();
-
-const targetWord = renderTargetWord(wordList, 5, 'yes').toUpperCase();
+const numberOfLetters = 6;
+const targetWord = renderTargetWord(
+  wordList,
+  numberOfLetters,
+  'yes'
+).toUpperCase();
 
 export default function GamePlayContainer() {
   console.log('targetword: ', targetWord);
@@ -76,6 +89,7 @@ export default function GamePlayContainer() {
           </>
         ) : (
           <InputRow
+            numberOfLetters={numberOfLetters}
             onSubmit={(newWord) => {
               const inputRow = document.querySelector('.input-row');
               inputRow.classList.toggle('hidden');
