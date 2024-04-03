@@ -48,6 +48,7 @@ export function evaluateGuess(guessedWord, targetWord) {
     targetWord.splice(index, 1, '?');
     targetWord = targetWord.join('');
   }
+  console.log(output);
   return output;
 }
 /* 

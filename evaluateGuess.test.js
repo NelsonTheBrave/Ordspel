@@ -50,7 +50,7 @@ describe('Ordspel', () => {
       { letter: 't', result: 'incorrect' },
     ]);
   });
-  it("trying my algorithm with Richard's example test", () => {
+  it("tries my algorithm against  Richard's example test", () => {
     const output = evaluateGuess('hallå', 'cykla');
     expect(output).toStrictEqual([
       { letter: 'h', result: 'incorrect' },
