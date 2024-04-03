@@ -79,7 +79,7 @@ describe('renderTargetWord()', () => {
     const accumulatedOutputs = [];
     const wordsMatchingCriteria = ['swarmed', 'delight'];
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 10; i++) {
       const output = renderTargetWord(wordList, 7, 'no');
       expect(output).toHaveLength(7);
       expect(wordsMatchingCriteria).toContain(output);
