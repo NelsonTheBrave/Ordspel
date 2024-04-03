@@ -50,6 +50,16 @@ describe('Ordspel', () => {
       { letter: 't', result: 'incorrect' },
     ]);
   });
+  it("trying my algorithm with Richard's example test", () => {
+    const output = evaluateGuess('hallå', 'cykla');
+    expect(output).toStrictEqual([
+      { letter: 'h', result: 'incorrect' },
+      { letter: 'a', result: 'misplaced' },
+      { letter: 'l', result: 'incorrect' },
+      { letter: 'l', result: 'correct' },
+      { letter: 'å', result: 'incorrect' },
+    ]);
+  });
 });
 
 /* 
@@ -57,9 +67,4 @@ FRÅGOR
 - Varför måste jag ha toStrictEqual? 
 - Hur kollar man något som skall ge random resultat? Köra testet flera gånger och att det måste bli olika?
 - Bra att kolla ett par olika varianter av samma funktionalitet? T.ex. att plocka ut ord med 5 bokstäver, och sedan med 6 bokstäver? Hur långt vill man gå i detta?
--
-
-
-
-
 */
