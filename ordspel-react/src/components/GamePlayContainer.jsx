@@ -3,47 +3,11 @@ import GuessedWord from './GuessedWord';
 import InputRow from './InputRow';
 import { useEffect, useState } from 'react';
 import { renderTargetWord } from '../renderTargetWord';
+import { wordListEnglish, wordListSpanish, wordListSwedish } from '../wordList';
 
-const wordList = [
-  'corn',
-  'roar',
-  'blue',
-  'bulb',
-  'creek',
-  'found',
-  'scrap',
-  'sassy',
-  'smoke',
-  'binge',
-  'daddy',
-  'mommy',
-  'techno',
-  'might',
-  'lunch',
-  'fight',
-  'broke',
-  'swamp',
-  'cranky',
-  'danced',
-  'bitter',
-  'swarmed',
-  'delight',
-  'tonight',
-  'pattern',
-];
-
-// async function getWordList() {
-//   const res = await fetch(
-//     'https://github.com/dwyl/english-words/blob/master/words_alpha.txt'
-//   );
-//   const payload = res.json();
-//   console.log('payload :', payload);
-// }
-
-// getWordList();
 const numberOfLetters = 6;
 const targetWord = renderTargetWord(
-  wordList,
+  wordListSpanish,
   numberOfLetters,
   'yes'
 ).toUpperCase();

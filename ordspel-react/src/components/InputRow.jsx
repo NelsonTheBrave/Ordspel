@@ -64,11 +64,17 @@ export default function InputRow({ onSubmit, isPaused, numberOfLetters }) {
 
         // Här kommer min nödlösning för att tömma input, eftersom jag inte lyckas använda mig av setBoxes() här utan att grejer fuckar up :(
         function clearInput() {
-          const event = new KeyboardEvent('keydown', {
+          const moveToEnd = new KeyboardEvent('keydown', {
+            key: 'Arrowright',
+          });
+          for (let i = 0; i < 10; i++) {
+            document.dispatchEvent(moveToEnd);
+          }
+          const deleteLetters = new KeyboardEvent('keydown', {
             key: 'Backspace',
           });
           for (let i = 0; i < 10; i++) {
-            document.dispatchEvent(event);
+            document.dispatchEvent(deleteLetters);
           }
         }
         clearInput();
