@@ -1,0 +1,100 @@
+.wrapper
+    border: 4px dotted #8d8174
+    min-width: 450px
+    width: fit-content
+    margin: 14em auto
+    text-align: center
+    background-color: #7a2c7a
+    h1
+        margin: 1rem 0
+        transform: scale(120%)
+        animation: lets-go 200ms 600ms
+        animation-timing-function: ease-in-ease-out
+        position: relative
+        top: -1.5rem
+    .start-text
+        transform: rotate(1deg) translateY(-30px)
+        margin-bottom: 1.3rem
+        color: #d793da
+        font-weight: bold
+        letter-spacing: 1.6px
+    .legend-and-count
+        display: flex
+        .legend
+            transform: rotate(-7deg)
+            text-align: left
+            border-radius: 3px
+            position: relative
+            width: fit-content
+            top: -2.5rem
+            left: -2rem
+            background-color: #594685
+            height: fit-content
+            padding: 1rem
+            animation: legend 300ms cubic-bezier(.61,-1.11,.41,2.03)
+            p
+                padding: 0 0.5rem
+                &.correct::before
+                    content: ''
+                    display: inline-block
+                    width: 1rem
+                    height: 0.8rem
+                    background-color: #4e7409
+                &.misplaced::before
+                    content: ''
+                    display: inline-block
+                    width: 1rem
+                    height: 0.8rem
+                    background-color: #2a4b23
+                &.incorrect::before
+                    content: ''
+                    display: inline-block
+                    width: 1rem
+                    height: 0.8rem
+                    background-color: #172b14
+        .guessed-count
+            visibility: hidden
+            background-color: #af1212
+            width: 14rem
+            height: fit-content
+            position: relative
+            text-align: left
+            padding: 1rem
+            top: -20px
+            left: 120px
+            transform: rotate(7deg)
+            animation: count 300ms 100ms cubic-bezier(.61,-1.11,.41,2.03) forwards
+    .celebration-message
+        color: #2bf311
+        font-weight: bold
+        font-size: 1.5rem
+        visibility: hidden
+        animation: celebration-message 300ms 1600ms
+        animation-fill-mode: forwards
+
+@keyframes celebration-message
+    80%
+        transform: scale(2,2)
+    100%
+        visibility: visible
+        transform: scale(1,1)
+
+@keyframes legend
+    0%
+        transform: rotate(0deg) scale(0.5, 0.5)
+@keyframes count
+    0%
+        transform: rotate(0deg) scale(0.5, 0.5)
+    100%
+        visibility: visible
+@keyframes lets-go
+    0%
+        transform: scale(120%)
+    75%
+        transform: scale(160%)
+    85%
+        transform: scale(150%)
+    93%
+        transform: scale(110%)
+    100%
+        transform: scale(120%)
