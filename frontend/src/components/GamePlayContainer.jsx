@@ -12,7 +12,6 @@ export default function GamePlayContainer() {
   const [guessedWords, setGuessedWord] = useState([]);
   const [targetWord, setTargetWord] = useState();
   const numberOfGuesses = guessedWords.length;
-  console.log(targetWord);
   useEffect(() => {
     async function loadWordList() {
       const res = await fetch(
@@ -23,7 +22,7 @@ export default function GamePlayContainer() {
     }
     loadWordList();
   }, []);
-
+  console.log('target word: ', targetWord);
   return (
     <div className='wrapper'>
       <div className='legend-and-count'>

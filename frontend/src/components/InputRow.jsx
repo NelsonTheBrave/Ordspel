@@ -33,7 +33,7 @@ const alphabet = [
   'Ö',
 ];
 
-export default function InputRow({ onSubmit, isPaused, numberOfLetters }) {
+export default function InputRow({ onSubmit, numberOfLetters }) {
   const initialInputState = [];
   for (let i = 0; i < numberOfLetters; i++) {
     if (i == 0) {
@@ -52,7 +52,6 @@ export default function InputRow({ onSubmit, isPaused, numberOfLetters }) {
 
   function handleLetterInput(event) {
     const pressedKey = event.key.toUpperCase();
-    console.log(pressedKey);
     if (pressedKey == 'ENTER') {
       const guessedWord = [];
       letterBoxes.forEach((box) => {
@@ -153,27 +152,21 @@ export default function InputRow({ onSubmit, isPaused, numberOfLetters }) {
     <div className='input-row'>
       {letterBoxes.map((box, index) => {
         return (
-          <>
-            {isPaused ? (
-              <p>Hi</p>
-            ) : (
-              <InputBox
-                key={index}
-                box={box}
-                selectBox={() => {
-                  const updatedLetterBoxes = [...letterBoxes];
-                  updatedLetterBoxes.forEach((box, boxIndex) => {
-                    if (boxIndex == index) {
-                      box.selected = true;
-                    } else {
-                      box.selected = false;
-                    }
-                  });
-                  setBoxes(updatedLetterBoxes);
-                }}
-              />
-            )}
-          </>
+          <InputBox
+            key={index}
+            box={box}
+            selectBox={() => {
+              const updatedLetterBoxes = [...letterBoxes];
+              updatedLetterBoxes.forEach((box, boxIndex) => {
+                if (boxIndex == index) {
+                  box.selected = true;
+                } else {
+                  box.selected = false;
+                }
+              });
+              setBoxes(updatedLetterBoxes);
+            }}
+          />
         );
       })}
     </div>
