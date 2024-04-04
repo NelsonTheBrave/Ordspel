@@ -18,6 +18,7 @@ export default function GamePlayContainer() {
         `/api/wordList?numberOfLetters=${numberOfLetters}&duplicate=${duplicateChoice}`
       );
       const payload = await res.json();
+      console.log(payload.target);
       setTargetWord(payload.targetWord);
     }
     loadWordList();
