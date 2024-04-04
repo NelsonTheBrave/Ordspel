@@ -1,0 +1,38 @@
+.options-wrapper
+    border: 4px dotted #8d8174
+    width: 470px
+    min-height: 285px
+    margin: 14em auto
+    text-align: center
+    background-color: #7a2c7a
+    h1
+        font-size: 3rem
+        letter-spacing: -5.5px
+        position: relative
+        color: #469ace
+        top: -3rem
+        animation: headline 300ms cubic-bezier(.61,-1.11,.41,2.03)
+    h2
+        font-size: 1.8rem
+        transform: rotate(-0.9deg)
+
+        span
+            color: #239e71
+            letter-spacing: -2px
+    p
+        font-weight: bold
+        color: #d793da
+        max-width: 70%
+        margin: 1rem auto
+        letter-spacing: 1.1px
+    .no-of-letters-wrapper
+        display: flex
+        width: 150px
+        justify-content: space-evenly
+        margin: 1rem auto
+        label
+            margin-left: 0.2rem
+
+@keyframes headline
+    0%
+        transform: rotate(10deg) scale(0.5, 0.5)
