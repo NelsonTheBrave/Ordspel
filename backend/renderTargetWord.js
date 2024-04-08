@@ -1,5 +1,6 @@
 export function renderTargetWord(wordList, wordLength, duplicatesAllowed) {
   try {
+    console.log(duplicatesAllowed);
     if (wordLength == NaN)
       // This check does not seem to work, need to rework it in the future
       throw 'Error: Word length has to consist of a number';

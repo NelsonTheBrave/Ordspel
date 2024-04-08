@@ -4,15 +4,32 @@ import GamePlayContainer from './components/GamePlayContainer';
 import GameOptionsContainer from './components/GameOptionsContainer';
 
 export default function App() {
-  const [gameOptionsConfigured, setGameOptionsConfigured] = useState(false);
+  const [gameOptions, setGameOptions] = useState({
+    configured: false,
+    wordLength: 6,
+    duplicatesAllowed: 'yes',
+  });
   return (
     <div className='app'>
-      {gameOptionsConfigured ? (
-        <GamePlayContainer />
+      {gameOptions.configured ? (
+        <GamePlayContainer
+          numberOfLetters={gameOptions.wordLength}
+          duplicateChoice={gameOptions.duplicatesAllowed}
+        />
       ) : (
         <GameOptionsContainer
-          onGameOptionsConfigured={() => {
-            setGameOptionsConfigured(true);
+          onGameOptionsConfigured={(wordLength, duplicatesAllowed) => {
+            console.log(
+              'wordlength: ',
+              wordLength,
+              'duplicates allowed? ',
+              duplicatesAllowed
+            );
+            setGameOptions({
+              configured: true,
+              wordLength: 4,
+              duplicatesAllowed: 'yes',
+            });
           }}
         />
       )}

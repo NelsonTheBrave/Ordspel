@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react';
 // import { renderTargetWord } from '../renderTargetWord';
 // import { wordListEnglish, wordListSpanish, wordListSwedish } from '../wordList';
 
-export default function GamePlayContainer() {
-  const numberOfLetters = 6;
-  const duplicateChoice = 'yes';
+export default function GamePlayContainer({
+  numberOfLetters,
+  duplicateChoice,
+}) {
+  console.log('number of letters: ', numberOfLetters);
   const [madeCorrectGuess, setMadeCorrectGuess] = useState(false);
   const [guessedWords, setGuessedWord] = useState([]);
   const [targetWord, setTargetWord] = useState();

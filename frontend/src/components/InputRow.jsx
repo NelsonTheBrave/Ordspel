@@ -155,7 +155,7 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
           <InputBox
             key={index}
             box={box}
-            selectBox={() => {
+            onSelectBox={() => {
               const updatedLetterBoxes = [...letterBoxes];
               updatedLetterBoxes.forEach((box, boxIndex) => {
                 if (boxIndex == index) {

@@ -1,4 +1,11 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
-const score = mongoose.model('score', { word: String, guesses: Number });
-export { mongo };
+const HighscoreModel = mongoose.model(
+  'highscore',
+  {
+    word: String,
+    attempts: Number,
+  },
+  'highscore'
+);
+export { HighscoreModel };

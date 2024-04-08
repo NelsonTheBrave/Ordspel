@@ -150,21 +150,62 @@
   color: #239e71;
   letter-spacing: -2px;
 }
-.options-wrapper p {
+.options-wrapper h3 {
   font-weight: bold;
   color: #d793da;
   max-width: 70%;
   margin: 1rem auto;
   letter-spacing: 1.1px;
+  font-size: 1rem;
+}
+.options-wrapper .letters-and-duplicates-wrapper {
+  border: 3px #a198bb solid;
+  border-radius: 40px;
+  margin: 2.5rem auto 0 auto;
+  width: 90%;
+  padding-bottom: 1rem;
 }
 .options-wrapper .no-of-letters-wrapper {
   display: flex;
-  width: 150px;
+  width: 90%;
   justify-content: space-evenly;
-  margin: 1rem auto;
+  margin: 2rem auto 1rem auto;
 }
-.options-wrapper .no-of-letters-wrapper label {
-  margin-left: 0.2rem;
+.options-wrapper .no-of-letters-wrapper > p {
+  width: 30px;
+  text-align: center;
+  padding-right: 5rem;
+  padding-top: 0.7rem;
+  color: #77bd8c;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.options-wrapper .allow-duplicates-wrapper {
+  display: flex;
+  width: 90%;
+  justify-content: space-evenly;
+  margin: 2rem auto 1rem auto;
+}
+.options-wrapper .allow-duplicates-wrapper > p {
+  text-align: center;
+  padding-left: 1rem;
+  padding-top: 0.7rem;
+  color: #77bd8c;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.options-wrapper button {
+  cursor: pointer;
+  margin: 2rem 0 2rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #afa1c5;
+  background-color: inherit;
+  border: none;
+  transition: transform 100ms;
+}
+.options-wrapper button:hover {
+  transform: scale(120%) rotate(2deg);
 }
 
 @keyframes headline {
@@ -265,4 +306,44 @@
     visibility: visible;
     transform: scale(1, 1);
   }
+}
+.word-length-option {
+  cursor: pointer;
+  background-color: #b42d2d;
+  height: 3rem;
+  width: 3rem;
+}
+.word-length-option:hover {
+  outline: 2px dotted green;
+}
+.word-length-option:hover {
+  outline: 2px dotted black;
+}
+.word-length-option.selected {
+  outline: 2px dotted green;
+}
+.word-length-option p {
+  padding-top: 0.4rem;
+  font-size: 2rem;
+}
+
+.allow-duplicates-option {
+  cursor: pointer;
+  background-color: #533911;
+  height: 3rem;
+  width: 4rem;
+  border-radius: 15px;
+}
+.allow-duplicates-option.selected {
+  outline: 2px dotted green;
+}
+.allow-duplicates-option.selected:hover {
+  outline: 2px dotted green;
+}
+.allow-duplicates-option:hover {
+  outline: 2px dotted black;
+}
+.allow-duplicates-option p {
+  padding-top: 0.8rem;
+  font-size: 1.2rem;
 }
