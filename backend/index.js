@@ -20,7 +20,7 @@ app.use(express.json());
 mongoose.connect(process.env.DB_URL);
 app.engine('handlebars', expressHandlebars.engine());
 app.set('view engine', 'handlebars');
-app.set('views', './templates');
+app.set('views', './backend/templates');
 
 app.get('/', async (req, res) => {
   res.status(200).render('index');
@@ -57,8 +57,8 @@ app.post('/api/highscore', async (req, res) => {
   res.status(201).json(newScore);
 });
 
-app.use('/assets', express.static('../frontend/dist/assets'));
-app.use('/src', express.static('../frontend/src'));
+app.use('/assets', express.static('./frontend/dist/assets'));
+app.use('/src', express.static('./frontend/src'));
 
 app.get('/api/wordList', async (req, res) => {
   const word = await renderTargetWord(

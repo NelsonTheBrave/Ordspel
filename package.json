@@ -1,0 +1,20 @@
+{
+  "name": "ordspel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./backend/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NelsonTheBrave/Ordspel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NelsonTheBrave/Ordspel/issues"
+  },
+  "homepage": "https://github.com/NelsonTheBrave/Ordspel#readme"
+}
