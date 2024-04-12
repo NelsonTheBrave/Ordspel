@@ -57,7 +57,7 @@ app.post('/api/highscore', async (req, res) => {
   res.status(201).json(newScore);
 });
 
-app.use('/assets', express.static('./frontend/dist/assets'));
+app.use('/assets', express.static('../frontend/dist/assets'));
 // app.use('/src', express.static('../frontend/src'));
 
 app.get('/api/wordList', async (req, res) => {
