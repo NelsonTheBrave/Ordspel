@@ -3,8 +3,14 @@ import mongoose from 'mongoose';
 const HighscoreModel = mongoose.model(
   'highscore',
   {
-    word: String,
-    attempts: Number,
+    targetWord: String,
+    guessedWords: Array,
+    numberOfGuesses: Number,
+    timeTaken: Number,
+    gameOptions: Array,
+    playerName: String,
+    points: Number,
+    targetWordLength: Number,
   },
   'highscore'
 );

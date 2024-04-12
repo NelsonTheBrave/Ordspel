@@ -1,0 +1,36 @@
+<div class='highscore-wrapper'>
+  <h1>Highscore!</h1>
+  <a class='play-another-game-btn' href='/'>Play another game</a>
+  <div class='filter-wrapper'>
+    <div class='filter-section-letters'>
+      <p>Wordlength</p>
+      <a href='/highscore'>Any</a>
+      <a href='/highscore?numberOfLetters=4'>4</a>
+      <a href='/highscore?numberOfLetters=5'>5</a>
+      <a href='/highscore?numberOfLetters=6'>6</a>
+      <a href='/highscore?numberOfLetters=7'>7</a>
+      {{! <p>Duplicates</p>
+      <a href=''>Yes</a>
+      <a href=''>No</a> }}
+    </div>
+  </div>
+
+  <ul>
+    {{#each highscore}}
+      <li>
+        <div class='player-name-and-points-wrapper'>
+          <span class='player-name'>{{this.playerName}}</span>
+          <span class='points'>{{this.points}}</span>
+        </div>
+        <div class='player-results-wrapper'>
+          <span class='player-result-label'>Guessed word</span>
+          <span class='player-result-value'>{{this.targetWord}}</span>
+          <span class='player-result-label'>Number of guesses</span>
+          <span class='player-result-value'>{{this.numberOfGuesses}}</span>
+          <span class='player-result-label'>Time taken (seconds)</span>
+          <span class='player-result-value'>{{this.timeTaken}}</span>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

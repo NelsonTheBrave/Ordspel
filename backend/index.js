@@ -1,6 +1,5 @@
 import express from 'express';
 import expressHandlebars from 'express-handlebars';
-import fs from 'fs/promises';
 
 import { renderTargetWord } from './renderTargetWord.js';
 import {
@@ -11,27 +10,38 @@ import {
 import mongoose from 'mongoose';
 import { HighscoreModel } from './src/models.js';
 
+async function sortHighscore(loadedScores) {
+  const sortedScores = loadedScores.sort((a, b) => b.points - a.points);
+  return sortedScores;
+}
+
 const app = express();
 app.use(express.json());
-mongoose.connect(
-  'mongodb+srv://NelsonTheBrave:!PASS-mongo@cluster0.cqjff7r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-);
-// mongoose.connect(process.env.DB_URL);
-
+mongoose.connect(process.env.DB_URL);
 app.engine('handlebars', expressHandlebars.engine());
 app.set('view engine', 'handlebars');
-app.set('views', '../frontend/templates');
-
-// app.get('/', async (req, res) => {
-//   const html = await fs.readFile('../frontend/dist/index.html');
-//   res.type('html').send(html);
-// });
+app.set('views', './templates');
 
 app.get('/', async (req, res) => {
   res.status(200).render('index');
 });
+app.get('/information', async (req, res) => {
+  res.status(200).render('information');
+});
+
 app.get('/highscore', async (req, res) => {
-  res.status(200).render('highscore');
+  let loadedScores = [];
+  if (req.query.numberOfLetters) {
+    loadedScores = await HighscoreModel.find({
+      targetWordLength: +req.query.numberOfLetters,
+    }).lean();
+  } else {
+    loadedScores = await HighscoreModel.find().lean();
+  }
+  const sortedScores = await sortHighscore(loadedScores);
+  res.status(200).render('highscore', {
+    highscore: sortedScores,
+  });
 });
 
 app.get('/api/highscore', async (req, res) => {
@@ -48,6 +58,7 @@ app.post('/api/highscore', async (req, res) => {
 });
 
 app.use('/assets', express.static('../frontend/dist/assets'));
+app.use('/src', express.static('../frontend/src'));
 
 app.get('/api/wordList', async (req, res) => {
   const word = await renderTargetWord(
@@ -57,6 +68,7 @@ app.get('/api/wordList', async (req, res) => {
   );
   res.send({ targetWord: word });
 });
+
 app.post('/api/score', (req, res) => {
   console.log(req.body);
   console.log(req.body.score);
