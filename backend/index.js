@@ -74,4 +74,4 @@ app.post('/api/score', (req, res) => {
   console.log(req.body.score);
 });
 
-app.listen(5080);
+app.listen(process.env.PORT || 5080);
