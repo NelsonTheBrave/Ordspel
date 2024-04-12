@@ -34,6 +34,7 @@ const alphabet = [
 ];
 
 export default function InputRow({ onSubmit, numberOfLetters }) {
+  // States
   const initialInputState = [];
   for (let i = 0; i < numberOfLetters; i++) {
     if (i == 0) {
@@ -43,8 +44,6 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
     }
   }
   const [letterBoxes, setBoxes] = useState(initialInputState);
-
-  console.log('letterboxes: ', letterBoxes);
 
   useEffect(() => {
     document.addEventListener('keydown', handleLetterInput);

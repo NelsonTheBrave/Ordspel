@@ -8,6 +8,7 @@ export default function App() {
     configured: false,
     wordLength: 6,
     duplicatesAllowed: 'yes',
+    startTime: undefined,
   });
   return (
     <div className='app'>
@@ -15,21 +16,18 @@ export default function App() {
         <GamePlayContainer
           numberOfLetters={gameOptions.wordLength}
           duplicateChoice={gameOptions.duplicatesAllowed}
+          startTime={gameOptions.startTime}
         />
       ) : (
         <GameOptionsContainer
           onGameOptionsConfigured={(wordLength, duplicatesAllowed) => {
-            console.log(
-              'wordlength: ',
-              wordLength,
-              'duplicates allowed? ',
-              duplicatesAllowed
-            );
             setGameOptions({
               configured: true,
-              wordLength: 4,
-              duplicatesAllowed: 'yes',
+              wordLength: wordLength.label,
+              duplicatesAllowed: duplicatesAllowed.label,
+              startTime: new Date(),
             });
+            // Servern startar tidtagning?
           }}
         />
       )}

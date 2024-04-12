@@ -1,0 +1,82 @@
+.highscore-wrapper
+    border: 4px dotted #8d8174
+    max-width: 650px
+    min-height: 600px
+    margin: 14rem auto
+    padding-top: 1rem
+    text-align: center
+    background: linear-gradient(#ff6701,#381702)
+    h1
+        color: #ff8724
+        position: absolute
+        transform: translate(150px, -80px)
+        font-size: 4rem
+    .play-another-game-btn
+        display: block
+        position: absolute
+        transform: translate(-55px, 0px)
+        // height: 3rem
+        width: 50px
+        padding: 1rem 0.7rem
+        background-color: #7c1010
+        color: #ffb0b0
+        writing-mode: vertical-lr
+        text-orientation: upright
+        font-weight: bold
+        font-size: 1.2rem
+    .filter-wrapper
+        font-size: 1.2rem
+        .filter-section-letters
+            display: flex
+            position: absolute
+            transform: translate(49px, 15px)
+            p
+                margin-right: 0.2rem
+                color: gold
+            a
+                background-color: #b32c2c
+                width: 3rem
+                margin: 0 0.2rem
+        // .filter-section-duplicates
+        //     display: flex
+        //     position: absolute
+        //     visibility: hidden
+
+    ul
+        border: 5px dotted black
+        width: 85%
+        max-width: 90%
+        margin: 2rem auto
+        background-color: #265209
+        li
+            .player-name-and-points-wrapper
+                display: flex
+                font-weight: bold
+                font-size: 1.4rem
+                letter-spacing: 1.2px
+                padding: 0.5rem
+                background-color: green
+                .player-name
+                    padding-left: 1rem
+                    display: block
+                    width: 70%
+                    text-align: left
+                    color: #fffc3f
+                .points
+                    color: #5eff00
+                    display: block
+                    width: 30%
+                    text-align: right
+                    transform: scale(130%) translateX(-15px)
+            .player-results-wrapper
+                text-align: left
+                margin: 0.5rem 1rem
+                display: flex
+                justify-content: space-evenly
+                font-size: 0.8rem
+                .player-result-value
+                    color: #85e658
+                    margin-right: 0.9rem
+                    font-weight: bold
+                .player-result-label
+                    color: #46bb0f

@@ -46,6 +46,12 @@ export default function GameOptionsContainer({ onGameOptionsConfigured }) {
 
   return (
     <div className='options-wrapper'>
+      <a className='information-btn' href='/information'>
+        information
+      </a>
+      <a className='highscore-btn' href='/highscore'>
+        <span>highscore</span>
+      </a>
       <h1>Yet Another Wordle Clone</h1>
       <h2>
         Let's play some <span>YAWC</span>
@@ -86,23 +92,17 @@ export default function GameOptionsContainer({ onGameOptionsConfigured }) {
               />
             );
           })}
-          <p>allow duplicates</p>
+          <p>duplicate letters</p>
         </div>
       </div>
       <button
         onClick={() => {
-          const wordLength = wordLengthOptions.forEach((option) => {
-            if (option.selected == true) {
-              console.log(option.label);
-              return option.label;
-            }
-          });
-          const duplicatesAllowed = allowDuplicatesOptions.forEach((option) => {
-            if (option.selected == true) {
-              console.log(option.label);
-              return option.label;
-            }
-          });
+          const wordLength = wordLengthOptions.find(
+            (option) => option.selected == true
+          );
+          const duplicatesAllowed = allowDuplicatesOptions.find(
+            (option) => option.selected == true
+          );
           onGameOptionsConfigured(wordLength, duplicatesAllowed);
         }}
       >
