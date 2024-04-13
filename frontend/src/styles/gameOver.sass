@@ -3,7 +3,7 @@
     display: block
     .celebration-message
         margin: 3rem 0 2rem 0
-        color: #2bf311
+        color: #decaf8
         font-weight: bold
         font-size: 1.5rem
         visibility: hidden
@@ -12,12 +12,12 @@
     .result-wrapper
         width: 70%
         margin: 1rem auto 1.5rem auto
-        border: 5px dotted gold
+        border: 5px dotted #decaf8
         padding: 0 0.5rem 1.5rem 0.5rem
         h2
             margin: 0.5rem 0
             font-size: 1rem
-            color: gold
+            color: #fadc30
         ul
             margin: 0 auto
             width: fit-content
@@ -30,25 +30,27 @@
                         display: block
                         width: 8rem
                     &:nth-child(2)
-                        color: gold
+                        color: #fadc30
             .score-item
                 margin-top: 1rem
                 font-weight: bold
     button
         display: block
-        margin: 0 0.3rem 0.9rem 0.3rem
+        margin: 0.6rem 0.3rem 0.5rem 0.3rem
         width: 11rem
-        height: 2.7rem
+        height: 3.5rem
         border-radius: 5px
         font-size: 1rem
         font-weight: bold
+        &:hover
+            outline: 3px dotted #d9eeff
     .btn-wrapper
         display: flex
         justify-content: center
         .submit-result-btn
-            background-color: #2b850f
+            background-color: #9887f8
         .new-game-btn
-            background-color: #6c60d8
+            background-color: #4b4296
     .submit-modal
         display: none
         position: fixed
@@ -63,14 +65,16 @@
             display: block
             opacity: 1
         .submit-modal-content
+            color: #dfb5fa
             position: fixed
             width: 70%
             max-width: 600px
-            height: 30%
+            height: 40%
             top: 35%
             left: 15%
-            border: 3px dotted #cab6b6
-            background-color: #af0a0a
+            border: 3px dashed #b6b8ca
+            border-radius: 15px
+            background-color: #63539c
             padding: 2rem
             font-size: 1.5rem
             animation: submit-modal-content 400ms
@@ -94,10 +98,10 @@
                 &.open
                     visibility: visible
                     transform: scale(120%)
-
             label
                 margin: 1rem
                 display: block
+                font-weight: bold
             input
                 padding: 0 0 0 1rem
                 border-radius: 5px
@@ -110,7 +114,9 @@
                     outline: none
             button
                 margin: 2rem auto
-                background-color: #6b1212
+                background-color: #261b68
+            .submit-btn
+                width: 10rem
 
 @keyframes celebration-message
     80%

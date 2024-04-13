@@ -59,7 +59,7 @@ app.post('/api/highscore', async (req, res) => {
 
 // app.use('/assets', express.static('../frontend/dist/assets'));
 app.use('/assets', express.static('./assets'));
-// app.use('/src', express.static('../frontend/src'));
+app.use('/src', express.static('../frontend/src'));
 
 app.get('/api/wordList', async (req, res) => {
   const word = await renderTargetWord(

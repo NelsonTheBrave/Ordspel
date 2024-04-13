@@ -53,10 +53,13 @@ export default function GameOptionsContainer({ onGameOptionsConfigured }) {
         <span>highscore</span>
       </a>
       <h1>Yet Another Wordle Clone</h1>
-      <h2>
-        Let's play some <span>YAWC</span>
-      </h2>
-      <h3>Before you start, choose your type of game from the options below</h3>
+      <p className='intro-text'>
+        <span>Welcome to my word guessing game!</span> In this game you will try
+        to figure out a randomized word by guessing. For each guess you will get
+        clues about it's correctness. Your score will depend on the number of
+        guesses, time taken and difficulty of the word. Good luck!
+      </p>
+      <h2 className='options-label'>make a choice</h2>
       <div className='letters-and-duplicates-wrapper'>
         <div className='no-of-letters-wrapper'>
           <p>letters</p>
@@ -92,7 +95,7 @@ export default function GameOptionsContainer({ onGameOptionsConfigured }) {
               />
             );
           })}
-          <p>duplicate letters</p>
+          <p>duplicate letters allowed?</p>
         </div>
       </div>
       <button

@@ -2,32 +2,9 @@
     border: 4px dotted #8d8174
     width: 470px
     min-height: 285px
-    margin: 14em auto
+    margin: 10em auto
     text-align: center
     background-color: #7a2c7a
-    .information-btn
-        display: block
-        position: absolute
-        writing-mode: vertical-lr
-        text-orientation: upright
-        background-color: #862424
-        transform: translate(-38px,30px) scaleX(190%)
-        padding: 1rem 0.2rem
-        font-weight: bold
-        &:hover
-            outline: 2px groove gold
-    .highscore-btn
-        display: block
-        margin-left: 466px
-        position: absolute
-        writing-mode: vertical-lr
-        text-orientation: upright
-        background-color: #bb2828
-        transform: translate(11px,100px) scaleX(190%)
-        padding: 1rem 0.2rem
-        font-weight: bold
-        &:hover
-            outline: 2px groove gold
     h1
         font-size: 3rem
         letter-spacing: -5.5px
@@ -35,30 +12,34 @@
         color: #469ace
         top: -3rem
         animation: headline 300ms cubic-bezier(.61,-1.11,.41,2.03)
-    h2
-        font-size: 1.8rem
-        transform: rotate(-0.9deg)
-
-        span
-            color: #239e71
-            letter-spacing: -2px
-    h3
+    .intro-text
         font-weight: bold
         color: #d793da
         max-width: 70%
-        margin: 1rem auto
+        margin: 0 auto 0 auto
         letter-spacing: 1.1px
         font-size: 1rem
+        padding-bottom: 1.5rem
+        span
+            color: white
+    .options-label
+        position: absolute
+        margin-left: 4rem
+        font-size: 2.3rem
+        letter-spacing: 3px
+        color: #c6bbff
+
     .letters-and-duplicates-wrapper
-        border: 3px #a198bb solid
-        border-radius: 40px
-        margin: 2.5rem auto 0 auto
+        border: 5px #a198bb dashed
+        border-radius: 20px
+        background-color: #483270
+        margin: 2.1rem auto 0 auto
         width: 90%
-        padding-bottom: 1rem
+        padding: 0.1rem 0 1rem 0
 
     .no-of-letters-wrapper
         display: flex
-        width: 90%
+        width: 80%
         justify-content: space-evenly
         margin: 2rem auto 1rem auto
         &>p
@@ -71,8 +52,8 @@
             font-weight: bold
     .allow-duplicates-wrapper
         display: flex
-        width: 90%
-        justify-content: space-evenly
+        width: 80%
+        justify-content: space-between
         margin: 2rem auto 1rem auto
         &>p
             text-align: center
@@ -93,6 +74,26 @@
 
         &:hover
             transform: scale(120%) rotate(2deg)
+    .information-btn
+        display: block
+        position: absolute
+        background-color: #71848d
+        transform: translate(-107px,13px)
+        padding: 1rem 0.5rem
+        font-weight: bold
+        z-index: 1
+        &:hover
+            z-index: 2
+    .highscore-btn
+        display: block
+        position: absolute
+        background-color: #4138b3
+        transform: translate(-96px,50px)
+        padding: 1rem 0.5rem
+        font-weight: bold
+        z-index: 1
+        &:hover
+            z-index: 2
 @keyframes headline
     0%
         transform: rotate(10deg) scale(0.5, 0.5)

@@ -77,7 +77,11 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
         }
         clearInput();
       } else {
-        window.alert('You have to fill all the boxes');
+        const warningMessage = document.querySelector('.warning-message');
+        warningMessage.classList.toggle('open');
+        setTimeout(() => {
+          warningMessage.classList.toggle('open');
+        }, 1000);
       }
     } else if (pressedKey == 'BACKSPACE') {
       const updatedLetterBoxes = [...letterBoxes];
@@ -148,26 +152,29 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
   }
 
   return (
-    <div className='input-row'>
-      {letterBoxes.map((box, index) => {
-        return (
-          <InputBox
-            key={index}
-            box={box}
-            onSelectBox={() => {
-              const updatedLetterBoxes = [...letterBoxes];
-              updatedLetterBoxes.forEach((box, boxIndex) => {
-                if (boxIndex == index) {
-                  box.selected = true;
-                } else {
-                  box.selected = false;
-                }
-              });
-              setBoxes(updatedLetterBoxes);
-            }}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className='input-row'>
+        {letterBoxes.map((box, index) => {
+          return (
+            <InputBox
+              key={index}
+              box={box}
+              onSelectBox={() => {
+                const updatedLetterBoxes = [...letterBoxes];
+                updatedLetterBoxes.forEach((box, boxIndex) => {
+                  if (boxIndex == index) {
+                    box.selected = true;
+                  } else {
+                    box.selected = false;
+                  }
+                });
+                setBoxes(updatedLetterBoxes);
+              }}
+            />
+          );
+        })}
+      </div>
+      <p className='warning-message'>You have to fill all the boxes!</p>
+    </>
   );
 }

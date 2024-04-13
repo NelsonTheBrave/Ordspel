@@ -1,52 +1,62 @@
 .highscore-wrapper
-    border: 4px dotted #8d8174
+    outline: 4px dashed #e9bd6c
     max-width: 650px
     min-height: 600px
     margin: 14rem auto
     padding-top: 1rem
+    padding-bottom: 3rem
     text-align: center
     background: linear-gradient(#ff6701,#381702)
     h1
-        color: #ff8724
+        color: #e9bd6c
         position: absolute
-        transform: translate(150px, -80px)
+        transform: translate(130px, -80px) scaleX(110%)
         font-size: 4rem
+        letter-spacing: 5px
     .play-another-game-btn
         display: block
         position: absolute
-        transform: translate(-55px, 0px)
-        // height: 3rem
-        width: 50px
+        transform: translate(-72px, 0px)
         padding: 1rem 0.7rem
-        background-color: #7c1010
-        color: #ffb0b0
-        writing-mode: vertical-lr
-        text-orientation: upright
+        background-color: #6d3007
+        color: #e9bd6c
         font-weight: bold
         font-size: 1.2rem
+        // &:hover
+            // outline: 3px dashed #b46e1d
     .filter-wrapper
         font-size: 1.2rem
+        font-weight: bold
+        color: #e9bd6c
+        padding-bottom: 2rem
+        p
+            margin-right: 0.2rem
+            position: absolute
+            margin-left: 3.3rem
+            margin-top: 0.4rem
         .filter-section-letters
             display: flex
             position: absolute
-            transform: translate(49px, 15px)
-            p
-                margin-right: 0.2rem
-                color: gold
+            transform: translate(49px, 25px)
             a
-                background-color: #b32c2c
+                background-color: #6d3007
                 width: 3rem
-                margin: 0 0.2rem
+                height: 2.5rem
+                border-radius: 40px
+                margin: 0.3rem 0.2rem 0 0.2rem
+                padding-top: 0.6rem
+                &:hover
+                    outline: 3px dashed #e08c2c
         // .filter-section-duplicates
         //     display: flex
         //     position: absolute
         //     visibility: hidden
 
     ul
-        border: 5px dotted black
+        border: 5px dashed #0c5f1a
         width: 85%
         max-width: 90%
-        margin: 2rem auto
+        margin: 4rem auto 2rem auto
         background-color: #265209
         li
             .player-name-and-points-wrapper

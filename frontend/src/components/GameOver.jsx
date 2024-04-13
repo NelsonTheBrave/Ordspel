@@ -87,7 +87,7 @@ export default function GameOver({ results }) {
               }
             }}
           >
-            Submit
+            Submit and start a new game
           </button>
         </div>
       </div>
