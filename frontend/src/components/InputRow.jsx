@@ -34,6 +34,7 @@ const alphabet = [
 ];
 
 export default function InputRow({ onSubmit, numberOfLetters }) {
+  // States
   const initialInputState = [];
   for (let i = 0; i < numberOfLetters; i++) {
     if (i == 0) {
@@ -43,8 +44,6 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
     }
   }
   const [letterBoxes, setBoxes] = useState(initialInputState);
-
-  console.log('letterboxes: ', letterBoxes);
 
   useEffect(() => {
     document.addEventListener('keydown', handleLetterInput);
@@ -59,7 +58,6 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
       });
       if (!guessedWord.includes('')) {
         onSubmit(guessedWord.join(''));
-        console.log('resetted letterBoxes: ', letterBoxes);
 
         // Här kommer min nödlösning för att tömma input, eftersom jag inte lyckas använda mig av setBoxes() här utan att grejer fuckar up :(
         function clearInput() {
@@ -78,7 +76,11 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
         }
         clearInput();
       } else {
-        window.alert('You have to fill all the boxes');
+        const warningMessage = document.querySelector('.warning-message');
+        warningMessage.classList.toggle('open');
+        setTimeout(() => {
+          warningMessage.classList.toggle('open');
+        }, 1000);
       }
     } else if (pressedKey == 'BACKSPACE') {
       const updatedLetterBoxes = [...letterBoxes];
@@ -125,7 +127,6 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
       }
     } else if (alphabet.includes(pressedKey)) {
       const updatedLetterBoxes = [...letterBoxes];
-      console.log('updated boxes: ', updatedLetterBoxes);
       updatedLetterBoxes.forEach((box) => {
         if (box.selected == true) {
           box.letter = pressedKey;
@@ -149,26 +150,29 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
   }
 
   return (
-    <div className='input-row'>
-      {letterBoxes.map((box, index) => {
-        return (
-          <InputBox
-            key={index}
-            box={box}
-            selectBox={() => {
-              const updatedLetterBoxes = [...letterBoxes];
-              updatedLetterBoxes.forEach((box, boxIndex) => {
-                if (boxIndex == index) {
-                  box.selected = true;
-                } else {
-                  box.selected = false;
-                }
-              });
-              setBoxes(updatedLetterBoxes);
-            }}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className='input-row'>
+        {letterBoxes.map((box, index) => {
+          return (
+            <InputBox
+              key={index}
+              box={box}
+              onSelectBox={() => {
+                const updatedLetterBoxes = [...letterBoxes];
+                updatedLetterBoxes.forEach((box, boxIndex) => {
+                  if (boxIndex == index) {
+                    box.selected = true;
+                  } else {
+                    box.selected = false;
+                  }
+                });
+                setBoxes(updatedLetterBoxes);
+              }}
+            />
+          );
+        })}
+      </div>
+      <p className='warning-message'>You have to fill all the boxes!</p>
+    </>
   );
 }

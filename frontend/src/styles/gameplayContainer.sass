@@ -1,8 +1,7 @@
-.wrapper
+.gameplay-wrapper
     border: 4px dotted #8d8174
-    min-width: 450px
-    width: fit-content
-    margin: 14em auto
+    width: 500px
+    margin: 10em auto
     text-align: center
     background-color: #7a2c7a
     h1
@@ -61,23 +60,9 @@
             text-align: left
             padding: 1rem
             top: -20px
-            left: 120px
+            left: 150px
             transform: rotate(7deg)
             animation: count 300ms 100ms cubic-bezier(.61,-1.11,.41,2.03) forwards
-    .celebration-message
-        color: #2bf311
-        font-weight: bold
-        font-size: 1.5rem
-        visibility: hidden
-        animation: celebration-message 300ms 1600ms
-        animation-fill-mode: forwards
-
-@keyframes celebration-message
-    80%
-        transform: scale(2,2)
-    100%
-        visibility: visible
-        transform: scale(1,1)
 
 @keyframes legend
     0%

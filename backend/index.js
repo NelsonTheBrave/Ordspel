@@ -1,24 +1,58 @@
 import express from 'express';
-import fs from 'fs/promises';
-import { renderTargetWord } from './renderTargetWord.js';
+import expressHandlebars from 'express-handlebars';
+import mongoose from 'mongoose';
+
+import { renderTargetWord } from './src/renderTargetWord.js';
+import { HighscoreModel } from './src/models.js';
 import {
   wordListEnglish,
-  wordListSpanish,
-  wordListSwedish,
-} from './wordList.js';
+  // wordListSpanish,
+  // wordListSwedish,
+} from './src/wordList.js';
+
+async function sortHighscore(loadedScores) {
+  const sortedScores = loadedScores.sort((a, b) => b.points - a.points);
+  return sortedScores;
+}
 
 const app = express();
 app.use(express.json());
+mongoose.connect(process.env.DB_URL);
+app.engine('handlebars', expressHandlebars.engine());
+app.set('view engine', 'handlebars');
+app.set('views', './templates');
 
-app.use((req, res, next) => {
-  console.log(req.method, req.path);
-  next();
-});
 app.get('/', async (req, res) => {
-  const html = await fs.readFile('../frontend/dist/index.html');
-  res.type('html').send(html);
+  res.status(200).render('index');
 });
-app.use('/assets', express.static('../frontend/dist/assets'));
+app.get('/information', async (req, res) => {
+  res.status(200).render('information');
+});
+app.get('/highscore', async (req, res) => {
+  let loadedScores = [];
+  if (req.query.numberOfLetters) {
+    loadedScores = await HighscoreModel.find({
+      targetWordLength: +req.query.numberOfLetters,
+    }).lean();
+  } else {
+    loadedScores = await HighscoreModel.find().lean();
+  }
+  const sortedScores = await sortHighscore(loadedScores);
+  res.status(200).render('highscore', {
+    highscore: sortedScores,
+  });
+});
+
+app.get('/api/highscore', async (req, res) => {
+  const scores = await HighscoreModel.find();
+  res.json(scores);
+});
+app.post('/api/highscore', async (req, res) => {
+  const newScore = req.body;
+  const itemModel = new HighscoreModel(newScore);
+  await itemModel.save();
+  res.status(201).json(newScore);
+});
 app.get('/api/wordList', async (req, res) => {
   const word = await renderTargetWord(
     wordListEnglish,
@@ -27,13 +61,8 @@ app.get('/api/wordList', async (req, res) => {
   );
   res.send({ targetWord: word });
 });
-app.post('/api/score', (req, res) => {
-  console.log(req.body);
-  console.log(req.body.score);
 
-  // app.post('/test', (req, res) => {
-  //   res.json({requestBody: req.body})  // <==== req.body will be a parsed JSON object
-  // })
-});
+app.use('/assets', express.static('./assets'));
+// app.use('/src', express.static('../frontend/src')); Route used for development
 
-app.listen(5080);
+app.listen(process.env.PORT || 5080);

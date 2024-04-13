@@ -1,35 +1,125 @@
+import { useState } from 'react';
+import WordLengthOption from './wordLengthOption';
+import AllowDuplicatesOption from './allowDuplicatesOption';
+
 export default function GameOptionsContainer({ onGameOptionsConfigured }) {
+  const [wordLengthOptions, setWordLengthOption] = useState([
+    {
+      label: 4,
+      selected: false,
+    },
+    {
+      label: 5,
+      selected: false,
+    },
+    {
+      label: 6,
+      selected: true,
+    },
+    {
+      label: 7,
+      selected: false,
+    },
+  ]);
+  const [allowDuplicatesOptions, setAllowDuplicatesOptions] = useState([
+    {
+      label: 'yes',
+      selected: true,
+    },
+    {
+      label: 'no',
+      selected: false,
+    },
+  ]);
+
+  function updateSelection(array, func, index) {
+    const updatedArray = [...array];
+    updatedArray.forEach((option, optionIndex) => {
+      if (optionIndex == index) {
+        option.selected = true;
+      } else {
+        option.selected = false;
+      }
+    });
+    func(updatedArray);
+  }
+
   return (
     <div className='options-wrapper'>
+      <a className='information-btn' href='/information'>
+        information
+      </a>
+      <a className='highscore-btn' href='/highscore'>
+        <span>highscore</span>
+      </a>
       <h1>Yet Another Wordle Clone</h1>
-      <h2>
-        Let's play some <span>YAWC</span>
-      </h2>
-      <p>Before you start, choose your type of game from the options below</p>
-      <div className='no-of-letters-wrapper'>
-        <div>
-          <input type='radio' id='4' name='letters' value='4' checked />
-          <label for='huey'>4</label>
+      <div className='intro-text'>
+        <p>
+          <span>Welcome to my word guessing game!</span>
+        </p>
+        <br></br>{' '}
+        <p>
+          In this game you will try to figure out a randomized word by guessing.
+          For each guess you will get clues about it's correctness. Your score
+          will depend on the number of guesses, time taken and difficulty of the
+          word.
+        </p>
+        <br></br>
+        <p>
+          Use your keyboard to write letters and press ENTER to make a guess.
+        </p>
+      </div>
+      <h2 className='options-label'>make a choice</h2>
+      <div className='letters-and-duplicates-wrapper'>
+        <div className='no-of-letters-wrapper'>
+          <p>letters</p>
+          {wordLengthOptions.map((option, index) => {
+            return (
+              <WordLengthOption
+                option={option}
+                key={index}
+                onSelectOption={() => {
+                  updateSelection(
+                    wordLengthOptions,
+                    setWordLengthOption,
+                    index
+                  );
+                }}
+              />
+            );
+          })}
         </div>
-        <div>
-          <input type='radio' id='5' name='letters' value='5' />
-          <label for='5'>5</label>
-        </div>
-        <div>
-          <input type='radio' id='6' name='letters' value='6' />
-          <label for='6'>6</label>
-        </div>
-        <div>
-          <input type='radio' id='7' name='letters' value='7' />
-          <label for='7'>7</label>
+        <div className='allow-duplicates-wrapper'>
+          {allowDuplicatesOptions.map((option, index) => {
+            return (
+              <AllowDuplicatesOption
+                option={option}
+                key={index}
+                onSelectOption={() => {
+                  updateSelection(
+                    allowDuplicatesOptions,
+                    setAllowDuplicatesOptions,
+                    index
+                  );
+                }}
+              />
+            );
+          })}
+          <p>duplicate letters allowed?</p>
         </div>
       </div>
       <button
         onClick={() => {
-          onGameOptionsConfigured();
+          const wordLength = wordLengthOptions.find(
+            (option) => option.selected == true
+          );
+          const duplicatesAllowed = allowDuplicatesOptions.find(
+            (option) => option.selected == true
+          );
+          onGameOptionsConfigured(wordLength, duplicatesAllowed);
         }}
       >
-        Move on!
+        Let's go!
       </button>
     </div>
   );

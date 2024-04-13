@@ -1,8 +1,36 @@
+*
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+html
+    background-color: #181a1b
+    font-family: sans-serif
+    color: #dde6e3
+button
+    cursor: pointer
+    background-color: inherit
+    color: inherit
+    border: none
+    text-decoration: none
+    &:active
+        text-decoration: none
+    &::focus
+        text-decoration: none
 .app
     display: flex
+ul
+    list-style: none
+a
+    text-decoration: none
+    color: inherit
 
 @import 'styles/gameplayContainer'
 @import 'styles/gameOptionsContainer'
 @import 'styles/inputBox'
 @import 'styles/inputRow'
 @import 'styles/guessedWord'
+@import 'styles/wordLengthOption'
+@import 'styles/allowDuplicatesOption'
+@import 'styles/information'
+@import 'styles/gameOver'
+@import 'styles/highscore'
