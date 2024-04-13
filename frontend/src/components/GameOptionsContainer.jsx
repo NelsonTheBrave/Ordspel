@@ -53,12 +53,22 @@ export default function GameOptionsContainer({ onGameOptionsConfigured }) {
         <span>highscore</span>
       </a>
       <h1>Yet Another Wordle Clone</h1>
-      <p className='intro-text'>
-        <span>Welcome to my word guessing game!</span> In this game you will try
-        to figure out a randomized word by guessing. For each guess you will get
-        clues about it's correctness. Your score will depend on the number of
-        guesses, time taken and difficulty of the word. Good luck!
-      </p>
+      <div className='intro-text'>
+        <p>
+          <span>Welcome to my word guessing game!</span>
+        </p>
+        <br></br>{' '}
+        <p>
+          In this game you will try to figure out a randomized word by guessing.
+          For each guess you will get clues about it's correctness. Your score
+          will depend on the number of guesses, time taken and difficulty of the
+          word.
+        </p>
+        <br></br>
+        <p>
+          Use your keyboard to write letters and press ENTER to make a guess.
+        </p>
+      </div>
       <h2 className='options-label'>make a choice</h2>
       <div className='letters-and-duplicates-wrapper'>
         <div className='no-of-letters-wrapper'>

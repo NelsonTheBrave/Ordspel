@@ -377,13 +377,13 @@ a {
   width: 3rem;
 }
 .word-length-option:hover {
-  outline: 2px dotted green;
+  outline: 3px dotted green;
 }
 .word-length-option:hover {
-  outline: 2px dotted black;
+  outline: 3px dotted black;
 }
 .word-length-option.selected {
-  outline: 2px dotted green;
+  outline: 3px dotted #b4a3fd;
 }
 .word-length-option p {
   padding-top: 0.4rem;
@@ -399,10 +399,10 @@ a {
   margin: 0 0.4rem;
 }
 .allow-duplicates-option.selected {
-  outline: 3px dotted green;
+  outline: 3px dotted #ffb444;
 }
 .allow-duplicates-option.selected:hover {
-  outline: 3px dotted green;
+  outline: 3px dotted #ffb444;
 }
 .allow-duplicates-option:hover {
   outline: 3px dotted black;
@@ -419,7 +419,8 @@ a {
   margin: 10rem auto;
   padding-top: 1rem;
   text-align: center;
-  background-color: #7a2c7a;
+  background-color: #083608;
+  color: #12b643;
 }
 .instructions-wrapper p {
   text-align: left;
@@ -430,8 +431,7 @@ a {
   position: absolute;
   transform: translate(-102px, 0px);
   padding: 1rem 0.7rem;
-  background-color: #6536bd;
-  color: #a9c2df;
+  background-color: #2a5c1d;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -604,7 +604,7 @@ a {
   outline: 4px dashed #e9bd6c;
   max-width: 650px;
   min-height: 600px;
-  margin: 14rem auto;
+  margin: 10rem auto;
   padding-top: 1rem;
   padding-bottom: 3rem;
   text-align: center;
