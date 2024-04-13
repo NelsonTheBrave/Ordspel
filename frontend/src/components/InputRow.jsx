@@ -58,7 +58,6 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
       });
       if (!guessedWord.includes('')) {
         onSubmit(guessedWord.join(''));
-        console.log('resetted letterBoxes: ', letterBoxes);
 
         // Här kommer min nödlösning för att tömma input, eftersom jag inte lyckas använda mig av setBoxes() här utan att grejer fuckar up :(
         function clearInput() {
@@ -128,7 +127,6 @@ export default function InputRow({ onSubmit, numberOfLetters }) {
       }
     } else if (alphabet.includes(pressedKey)) {
       const updatedLetterBoxes = [...letterBoxes];
-      console.log('updated boxes: ', updatedLetterBoxes);
       updatedLetterBoxes.forEach((box) => {
         if (box.selected == true) {
           box.letter = pressedKey;

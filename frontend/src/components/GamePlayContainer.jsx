@@ -37,9 +37,6 @@ export default function GamePlayContainer({
     loadWordList();
   }, []);
 
-  console.log('target word: ', targetWord);
-  console.log('time taken in seconds: ', results.timeTaken);
-
   return (
     <div className='gameplay-wrapper'>
       <div className='legend-and-count'>
@@ -60,7 +57,6 @@ export default function GamePlayContainer({
             targetWord={targetWord}
             onCorrectGuess={() => {
               setTimeout(() => {
-                console.log('mjau');
                 setMadeCorrectGuess(true);
                 // window.scrollTo(0, document.body.scrollHeight); // For auto scrolling to results
               }, 1300);

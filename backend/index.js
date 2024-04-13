@@ -1,14 +1,14 @@
 import express from 'express';
 import expressHandlebars from 'express-handlebars';
+import mongoose from 'mongoose';
 
-import { renderTargetWord } from './renderTargetWord.js';
+import { renderTargetWord } from './src/renderTargetWord.js';
+import { HighscoreModel } from './src/models.js';
 import {
   wordListEnglish,
-  wordListSpanish,
-  wordListSwedish,
-} from './wordList.js';
-import mongoose from 'mongoose';
-import { HighscoreModel } from './src/models.js';
+  // wordListSpanish,
+  // wordListSwedish,
+} from './src/wordList.js';
 
 async function sortHighscore(loadedScores) {
   const sortedScores = loadedScores.sort((a, b) => b.points - a.points);
@@ -28,7 +28,6 @@ app.get('/', async (req, res) => {
 app.get('/information', async (req, res) => {
   res.status(200).render('information');
 });
-
 app.get('/highscore', async (req, res) => {
   let loadedScores = [];
   if (req.query.numberOfLetters) {
@@ -48,19 +47,12 @@ app.get('/api/highscore', async (req, res) => {
   const scores = await HighscoreModel.find();
   res.json(scores);
 });
-
 app.post('/api/highscore', async (req, res) => {
   const newScore = req.body;
-  console.log(req.body);
   const itemModel = new HighscoreModel(newScore);
   await itemModel.save();
   res.status(201).json(newScore);
 });
-
-// app.use('/assets', express.static('../frontend/dist/assets'));
-app.use('/assets', express.static('./assets'));
-app.use('/src', express.static('../frontend/src'));
-
 app.get('/api/wordList', async (req, res) => {
   const word = await renderTargetWord(
     wordListEnglish,
@@ -70,9 +62,7 @@ app.get('/api/wordList', async (req, res) => {
   res.send({ targetWord: word });
 });
 
-app.post('/api/score', (req, res) => {
-  console.log(req.body);
-  console.log(req.body.score);
-});
+app.use('/assets', express.static('./assets'));
+// app.use('/src', express.static('../frontend/src')); Route used for development
 
 app.listen(process.env.PORT || 5080);
